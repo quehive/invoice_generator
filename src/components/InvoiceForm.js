@@ -23,9 +23,9 @@ class InvoiceForm extends React.Component {
       total: "0.00",
       subTotal: "0.00",
       taxRate: "",
-      taxAmmount: "0.00",
+      taxAmount: "0.00",
       discountRate: "",
-      discountAmmount: "0.00",
+      discountAmount: "0.00",
     };
     this.state.items = [
       {
@@ -74,14 +74,14 @@ class InvoiceForm extends React.Component {
       () => {
         this.setState(
           {
-            taxAmmount: parseFloat(
+            taxAmount: parseFloat(
               parseFloat(subTotal) * (this.state.taxRate / 100)
             ).toFixed(2),
           },
           () => {
             this.setState(
               {
-                discountAmmount: parseFloat(
+                discountAmount: parseFloat(
                   parseFloat(subTotal) * (this.state.discountRate / 100)
                 ).toFixed(2),
               },
@@ -89,8 +89,8 @@ class InvoiceForm extends React.Component {
                 this.setState({
                   total:
                     subTotal -
-                    this.state.discountAmmount +
-                    parseFloat(this.state.taxAmmount),
+                    this.state.discountAmount +
+                    parseFloat(this.state.taxAmount),
                 });
               }
             );
@@ -294,7 +294,7 @@ class InvoiceForm extends React.Component {
                         ({this.state.discountRate || 0}%)
                       </span>
                       {this.state.currency}
-                      {this.state.discountAmmount || 0}
+                      {this.state.discountAmount || 0}
                     </span>
                   </div>
                   <div className="d-flex flex-row align-items-start justify-content-between mt-2">
@@ -304,7 +304,7 @@ class InvoiceForm extends React.Component {
                         ({this.state.taxRate || 0}%)
                       </span>
                       {this.state.currency}
-                      {this.state.taxAmmount || 0}
+                      {this.state.taxAmount || 0}
                     </span>
                   </div>
                   <hr />
@@ -348,8 +348,8 @@ class InvoiceForm extends React.Component {
                 items={this.state.items}
                 currency={this.state.currency}
                 subTotal={this.state.subTotal}
-                taxAmmount={this.state.taxAmmount}
-                discountAmmount={this.state.discountAmmount}
+                taxAmount={this.state.taxAmount}
+                discountAmount={this.state.discountAmount}
                 total={this.state.total}
               />
               {/*============================================ InvoiceModal =========================================================*/}
